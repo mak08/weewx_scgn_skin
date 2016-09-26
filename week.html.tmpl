@@ -1,0 +1,167 @@
+#errorCatcher Echo
+##
+## Specifying an encoding of UTF-8 is usually safe, but if your text is 
+## actually in Latin-1, then you should replace the string "UTF-8" with "latin-1"
+#encoding UTF-8
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head profile="http://www.w3.org/2005/10/profile">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>$station.location Wetterstation</title>
+	<link rel="stylesheet" href="weewx.css"/>
+	<link rel="icon" type="image/png" href="favicon.ico" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript">
+	  function openURL(urlname) {
+	  window.location=urlname;
+	  }
+
+      var time = new Date().getTime();
+
+      $(document.body).bind("mousemove keypress", function(e) {
+	  time = new Date().getTime();
+      });
+
+      function refresh() {
+	  if(new Date().getTime() - time >= 300000) 
+	  window.location.reload(true);
+	  else 
+	  setTimeout(refresh, 10000);
+      }
+
+      setTimeout(refresh, 10000);
+
+	</script>
+  </head>
+
+  <body>
+
+
+	<div class="fPage" id="page">
+	  
+	  <div class="row fContentSpaced" style="height:140px;">
+		<div class="column fColorStandard" style="flex-grow:1;">
+		  <div class="item fColorStandard">
+			<h1>Wetter am $station.location</h1>
+		  </div>
+		  <div class="row" style="align-items: center;">
+
+			<div class="item" style="flex-grow:1;">
+			  <h5>aktualisiert um $current.dateTime</h5>
+			</div>
+			<div>
+			<div class="item">
+			<a class="linkbutton" href="index.html">Tag</a>
+			</div>
+			<div class="item">
+			<a class="linkbutton" href="month.html">Monat</a>
+			</div>
+			<div class="item">
+			<a class="linkbutton" href="year.html">Jahr</a>
+			</div>
+			</div>
+          </div>
+		</div>
+	  </div>
+
+	  <div class="row" style="flex-grow:0.3;">
+
+		<div class="column" style="flex-grow:0.2;">
+		  <div class="row fColorStandard">
+			<div class="column fContentSpaced" style="flex-grow:0;">
+			  <div class="item fColorStandard" style="flex-grox:0;">
+				<h3>Extremwerte</h3>
+			  </div>
+			  <div class="row">
+				<div class="column fCompactLabel">
+				  <div class="item fCompactLabel">Höchsttemperatur:</div>
+				  <div class="item fCompactLabel">Tiefsttemperatur:</div>
+				  <div class="item fCompactLabel">max. Luftdruck:</div>
+				  <div class="item fCompactLabel">min. Luftdruck:</div>
+				  <div class="item fCompactLabel">max. Windgeschwindigkeit:</div>
+				</div>
+				<div class="column fCompactLabel">
+				  <div class="item fCompactLabel">$week.outTemp.max - $week.outTemp.maxtime</div>
+				  <div class="item fCompactLabel">$week.outTemp.min - $week.outTemp.mintime</div>
+				  <div class="item fCompactLabel">$week.barometer.max - $week.barometer.maxtime</div>
+				  <div class="item fCompactLabel">$week.barometer.min - $week.barometer.mintime</div>
+				  <div class="item fCompactLabel">$week.windSpeed.max - $week.windSpeed.maxtime</div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="row fColorStandard" style="flex-grow:3;">
+		  </div>
+		  <div class="row fColorStandard" style="flex-grow:0.3;">
+			<div class="column fContentSpaced" style="flex-grow:0;">
+			  <div class="item" style="flex-grox:0;">
+				<h3>Stationsinfos</h3>
+			  </div>
+			  <div class="row">
+				<div class="column fCompactLabel">
+				  <div class="item fCompactLabel">Breitengrad: </div>
+				  <div class="item fCompactLabel">Längengrad:</div>
+				  <div class="item fCompactLabel">Meereshöhe:</div>
+				</div>
+				<div class="column fCompactLabel">
+				  <div class="item fCompactLabel">$station.latitude[0]&deg; $station.latitude[1]' $station.latitude[2]</div>
+				  <div class="item fCompactLabel">$station.longitude[0]&deg; $station.longitude[1]' $station.longitude[2]</div>
+				  <div class="item fCompactLabel">$station.altitude</div>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="column fCompactLabel">
+				  <div class="item fCompactLabel">Hardware: </div>
+				  <div class="item fCompactLabel"></div>
+				</div>
+				<div class="column fCompactLabel">
+				  <div class="item fCompactLabel">FineOffset WH1080</div>
+				  <div class="item fCompactLabel">RaspberryPi</div>
+				</div>
+			  </div>
+		      <div class="row">
+				<div class="item"><em>Keine Gewähr auf Verläßlichkeit<br>der Daten!</em></div>
+              </div>
+			</div>
+		  </div>
+		</div>
+		<div class="column" style="flex-grow:10;">
+		  <div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
+			<img src="weektempdew.png"   alt="Temperatures" />
+		  </div>
+		  <div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
+			<img src="weekbarometer.png" alt="Barometer"/>
+		  </div>
+		  <div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
+			<img src="weekwind.png"      alt="Wind" />
+		  </div>
+		  <div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
+			<img src="weekwindvec.png"   alt="Wind Vector" />
+		  </div>
+		  <div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
+			<img src="weekhum.png"       alt="Humidity" />
+		  </div>
+		  <div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
+			<img src="weekrain.png"      alt="Rain" />
+		  </div>
+		</div>
+
+	  </div>
+
+	  <div id="footer" class="row fContentSpaced" style="color:#202010;">
+		<div class="item" style="color:#202010;">
+		  <a href="http://www.weewx.com">powered by WeeWX</a>
+		</div>
+		<div class="item" style="color:#202010;">Aktiv $station.os_uptime</div>
+		<div class="item" style="color:#202010;">
+		  <address> <a href="mailto:michael.kappert@gmx.net">Kontakt</a> </address>
+		</div>
+	  </div>
+	</div>
+    
+  </body>
+
+</html>
