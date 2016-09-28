@@ -78,19 +78,17 @@
 			  <div class="row">
 				<div class="column fCompactLabel">
 				  <div class="item fCompactLabel">Temperatur:</div>
-				  <div class="item fCompactLabel">Wind / Böen:</div>
-				  <div class="item fCompactLabel">Windrichtung:</div>
-				  <div class="item fCompactLabel">Barometer:</div>
-				  <div class="item fCompactLabel">Barometer Trend:</div>
+				  <div class="item fCompactLabel">Wind:</div>
+				  <div class="item fCompactLabel">Böen:</div>
+				  <div class="item fCompactLabel">Barometer (Trend)</div>
 				  <div class="item fCompactLabel">Luftfeuchte:</div>
 				  <div class="item fCompactLabel">Regenrate:</div>
 				</div>
 				<div class="column fCompactLabel">
 				  <div class="item fCompactLabel bold">$current.outTemp</div>
-				  <div class="item fCompactLabel bold">$current.windSpeed / $current.windGust</div>
-				  <div class="item fCompactLabel bold">$current.windDir ($current.windDir.ordinal_compass)</div>
-				  <div class="item fCompactLabel bold">$current.barometer</div>
-				  <div class="item fCompactLabel bold">$trend.barometer</div>
+				  <div class="item fCompactLabel bold">$current.windSpeed aus $current.windDir.ordinal_compass</div>
+				  <div class="item fCompactLabel bold">$current.windGust aus $current.windGustDir.ordinal_compass</div>
+				  <div class="item fCompactLabel bold">$current.barometer ($trend.barometer)</div>
 				  <div class="item fCompactLabel bold">$current.outHumidity</div>
 				  <div class="item fCompactLabel bold">$current.rainRate</div>
 				</div>
