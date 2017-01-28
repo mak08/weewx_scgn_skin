@@ -6,7 +6,7 @@
     <title>Wetter</title>
 	<style>
 		body {
-			color: #203040;
+			color: #406080;
 		    font-family: Arial;
 			font-size: 14px;
 		}
@@ -17,7 +17,8 @@
 		<table><tbody>
 		    <tr><td>Temperatur</td><td><div style="font-size:115%"><b>$current.outTemp</b></div></td></tr>
 			<tr><td>Luftdruck</td><td><div style="font-size:115%"><b>$current.barometer</b></div></td></tr>
-			<tr><td>Wind</td><td><div style="font-size:115%"><b>$current.windDir.ordinal_compass - $current.windSpeed</b></div></td></tr>
+			<tr><td>Wind</td><td><div style="font-size:115%"><b>$current.windSpeed</b></div></td></tr>
+			<tr><td>Richtung</td><td><div style="font-size:115%"><b>$current.windDir.ordinal_compass</b></div></td></tr>
 		</tbody></table>
 		 <p>Stand <b> $current.dateTime</b></p>
     </div>
