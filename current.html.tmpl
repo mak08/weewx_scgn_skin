@@ -11,6 +11,9 @@
 			font-size: 14px;
 		}
 	</style>
+	<!-- This page is meant to be displayed in an IFrame on scgn.de, but the embedded links point to
+		 the origin domain, bitweide.de. Therefor, instruct the browser to open them in a new tab. -->
+	<base target="_blank"/>
   </head>
   <body>
     <div id="weatherinfo">
@@ -20,7 +23,8 @@
 			<tr><td>Wind</td><td><div style="font-size:115%"><b>$current.windSpeed</b></div></td></tr>
 			<tr><td>Richtung</td><td><div style="font-size:115%"><b>$current.windDir.ordinal_compass</b></div></td></tr>
 		</tbody></table>
-		 <p>Stand <b> $current.dateTime</b></p>
+		<p>Stand <b> $current.dateTime</b></p>
+		<p><a href="index.html"><em>SCGN Wetterstation</em></a></p>
     </div>
   </body>
 </html>
