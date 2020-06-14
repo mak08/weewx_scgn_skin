@@ -16,20 +16,20 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript">
 	  function openURL(urlname) {
-	  window.location=urlname;
+		  window.location=urlname;
 	  }
 
       var time = new Date().getTime();
 
       $(document.body).bind("mousemove keypress", function(e) {
-	  time = new Date().getTime();
+		  time = new Date().getTime();
       });
 
       function refresh() {
-	  if(new Date().getTime() - time >= 300000) 
-	  window.location.reload(true);
-	  else 
-	  setTimeout(refresh, 10000);
+		  if(new Date().getTime() - time >= 300000) 
+			  window.location.reload(true);
+		  else 
+			  setTimeout(refresh, 10000);
       }
 
       setTimeout(refresh, 10000);
@@ -40,173 +40,120 @@
   <body>
 
 
-	<div class="fPage" id="page">
+	<div class="grid" id="page">
 	  
-	  <div class="row fContentSpaced" style="height:140px;">
-		<div class="column fColorStandard" style="flex-grow:1;">
-		  <div class="item fColorStandard">
-			<h1>Wetter am Segelclub Graben-Neudorf</h1>
-		  </div>
-		  <div class="row" style="align-items: center;">
-
-			<div class="item" style="flex-grow:1;">
-			  <h5>aktualisiert um $current.dateTime</h5>
-			</div>
-			<div>
-			<div class="item">
-			<a class="linkbutton" href="week.html">Woche</a>
-			</div>
-			<div class="item">
-			<a class="linkbutton" href="month.html">Monat</a>
-			</div>
-			<div class="item">
-			<a class="linkbutton" href="year.html">Jahr</a>
-			</div>
-			</div>
-          </div>
-		</div>
+	  <div class="header">
+		<h1>Wetter am Segelclub Graben-Neudorf</h1>
+	  </div>
+	  
+	  <div class="updated">
+		<h5>aktualisiert um $current.dateTime</h5>
+	  </div>
+	  
+	  <div class="navbuttons">
+		  <a class="linkbutton" href="week.html">Woche</a>
+		  <a class="linkbutton" href="month.html">Monat</a>
+		  <a class="linkbutton" href="year.html">Jahr</a>
 	  </div>
 
-	  <div class="row" style="flex-grow:0.3;">
+	  <div class="hdg_current">
+		<h3>Aktuell</h3>
+	  </div>
+	  
+	  <div class="lbl_tmp">Temperatur:</div>
+	  <div class="lbl_wind">Wind:</div>
+	  <div class="lbl_gust">Böen:</div>
+	  <div class="lbl_press">Barometer (Trend)</div>
+	  <div class="lbl_hum">Luftfeuchte:</div>
+	  <div class="lbl_rain">Regenrate:</div>
 
-		<div class="column" style="flex-grow:0.2;">
-		  <div class="row fColorStandard">
-			<div class="column fContentSpaced" style="flex-grow:0;">
-			  <div class="item fColorStandard" style="flex-grox:0;">
-				<h3>Aktuell</h3>
-			  </div>
-			  <div class="row">
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">Temperatur:</div>
-				  <div class="item fCompactLabel">Wind:</div>
-				  <div class="item fCompactLabel">Böen:</div>
-				  <div class="item fCompactLabel">Barometer (Trend)</div>
-				  <div class="item fCompactLabel">Luftfeuchte:</div>
-				  <div class="item fCompactLabel">Regenrate:</div>
-				</div>
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel bold">$current.outTemp</div>
-				  <div class="item fCompactLabel bold">$current.windSpeed aus $current.windDir.ordinal_compass</div>
-				  <div class="item fCompactLabel bold">$current.windGust aus $current.windGustDir.ordinal_compass</div>
-				  <div class="item fCompactLabel bold">$current.barometer ($trend.barometer)</div>
-				  <div class="item fCompactLabel bold">$current.outHumidity</div>
-				  <div class="item fCompactLabel bold">$current.rainRate</div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		  <div class="row fColorStandard">
-			<div class="column fContentSpaced" style="flex-grow:0;">
-			  <div class="item fColorStandard" style="flex-grox:0;">
-				<h3>Extremwerte</h3>
-			  </div>
-			  <div class="row">
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">Höchsttemperatur:</div>
-				  <div class="item fCompactLabel">Tiefsttemperatur:</div>
-				  <div class="item fCompactLabel">max. Luftdruck:</div>
-				  <div class="item fCompactLabel">min. Luftdruck:</div>
-				  <div class="item fCompactLabel">max. Windgeschwindigkeit:</div>
-				  <div class="item fCompactLabel">max. Böen</div>
-				</div>
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">$day.outTemp.max um $day.outTemp.maxtime</div>
-				  <div class="item fCompactLabel">$day.outTemp.min um $day.outTemp.mintime</div>
-				  <div class="item fCompactLabel">$day.barometer.max um $day.barometer.maxtime</div>
-				  <div class="item fCompactLabel">$day.barometer.min um $day.barometer.mintime</div>
-				  <div class="item fCompactLabel">$day.windSpeed.max um $day.windSpeed.maxtime</div>
-				  <div class="item fCompactLabel">$day.windGust.max um $day.windGust.maxtime</div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		  <div class="row fColorStandard" style="flex-grow:0.3;">
-			<div class="column" style="flex-grow:0;">
-			  <div class="item" style="flex-grox:0;">
-				<h3>Almanach</h3>
-			  </div>
-			  <div class="row">
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">Sonnenaufgang: </div>
-				  <div class="item fCompactLabel">Sonnenuntergang:</div>
-				</div>
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">$almanac.sunrise</div>
-				  <div class="item fCompactLabel">$almanac.sunset</div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		  <div class="row fColorStandard" style="flex-grow:3;">
-		  </div>
-		  <div class="row fColorStandard" style="flex-grow:0.3;">
-			<div class="column fContentSpaced" style="flex-grow:0;">
-			  <div class="item" style="flex-grox:0;">
-				<h3>Stationsinfos</h3>
-			  </div>
-			  <div class="row">
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">Breitengrad: </div>
-				  <div class="item fCompactLabel">Längengrad:</div>
-				  <div class="item fCompactLabel">Meereshöhe:</div>
-				</div>
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">$station.latitude[0]&deg; $station.latitude[1]' $station.latitude[2]</div>
-				  <div class="item fCompactLabel">$station.longitude[0]&deg; $station.longitude[1]' $station.longitude[2]</div>
-				  <div class="item fCompactLabel">$station.altitude</div>
-				</div>
-			  </div>
-			  <div class="row">
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">Hardware: </div>
-				  <div class="item fCompactLabel"></div>
-				</div>
-				<div class="column fCompactLabel">
-				  <div class="item fCompactLabel">FineOffset WH1080</div>
-				  <div class="item fCompactLabel">RaspberryPi</div>
-				</div>
-			  </div>
-		      <div class="row">
-				<div class="item"><em>Keine Gewähr auf Verläßlichkeit<br>der Daten!</em></div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		  <div class="column" style="flex-grow:10;">
-			<div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
-			  <img src="daytempdew.png"   alt="Temperatures" />
-			</div>
-			<div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
-			  <img src="daybarometer.png" alt="Barometer"/>
-			</div>
-			<div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
-			  <img src="daywind.png"      alt="Wind" />
-			</div>
-			<div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
-			  <img src="daywindvec.png"   alt="Wind Vector" />
-			</div>
-			<div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
-			  <img src="dayhum.png"       alt="Humidity" />
-			</div>
-			<div class="row fContentSpaced fColorStandard" style="flex-grow:4;">
-			  <img src="dayrain.png"      alt="Rain" />
-			</div>
-		  </div>
+	  <div class="val_tmp">$current.outTemp</div>
+	  <div class="val_wind">$current.windSpeed aus $current.windDir.ordinal_compass</div>
+	  <div class="val_gust">$current.windGust aus $current.windGustDir.ordinal_compass</div>
+	  <div class="val_press">$current.barometer ($trend.barometer)</div>
+	  <div class="val_hum">$current.outHumidity</div>
+	  <div class="val_rain">$current.rainRate</div>
+	  
+	  <div class="hdg_extreme">
+		<h3>Extremwerte</h3>
+	  </div>
+	  
+	  <div class="lbl_thigh">Höchsttemperatur:</div>
+	  <div class="lbl_tlow">Tiefsttemperatur:</div>
+	  <div class="lbl_phigh">max. Luftdruck:</div>
+	  <div class="lbl_plow">min. Luftdruck:</div>
+	  <div class="lbl_vmax">max. Windgeschwindigkeit:</div>
+	  <div class="lbl_gmax">max. Böen</div>
 
-		</div>
+	  <div class="val_thigh">$day.outTemp.max um $day.outTemp.maxtime</div>
+	  <div class="val_tlow">$day.outTemp.min um $day.outTemp.mintime</div>
+	  <div class="val_phigh">$day.barometer.max um $day.barometer.maxtime</div>
+	  <div class="val_plow">$day.barometer.min um $day.barometer.mintime</div>
+	  <div class="val_vmax">$day.windSpeed.max um $day.windSpeed.maxtime</div>
+	  <div class="val_gmax">$day.windGust.max um $day.windGust.maxtime</div>
 
-		<div id="footer" class="row fContentSpaced" style="color:#202010;">
-		  <div class="item" style="color:#202010;">
-			<a href="http://www.weewx.com">powered by WeeWX</a>
-		  </div>
-		  <div class="item" style="color:#202010;">Aktiv $station.os_uptime</div>
-		  <div class="item" style="color:#202010;">
-			<address> <a href="mailto:michael.kappert@gmx.net">Kontakt</a> </address>
-		  </div>
-		</div>
+	  <div class="hdg_almanach">
+		<h3>Almanach</h3>
 	  </div>
 
-	</div>	      
+	  <div class="lbl_sunrise">Sonnenaufgang: </div>
+	  <div class="lbl_sundown">Sonnenuntergang:</div>
+
+	  <div class="val_sunrise">$almanac.sunrise</div>
+	  <div class="val_sundown">$almanac.sunset</div>
+
+	  <div class="hdg_stationinfo">
+		<h3>Stationsinfos</h3>
+	  </div>
+
+	  <div class="lbl_lat">Breitengrad: </div>
+	  <div class="lbl_lon">Längengrad:</div>
+	  <div class="lbl_sealevel">Meereshöhe:</div>
+
+	  <div class="val_lat">$station.latitude[0]&deg; $station.latitude[1]' $station.latitude[2]</div>
+	  <div class="val_lon">$station.longitude[0]&deg; $station.longitude[1]' $station.longitude[2]</div>
+	  <div class="val_sealevel">$station.altitude</div>
+
+	  <div class="lbl_hw">Hardware: </div>
+
+	  <div class="val_hw1">froggit WH1080SE</div>
+	  <div class="val_hw2">RaspberryPi</div>
+
+	  <div class="lbl_disclaimer">
+		<em>Keine Gewähr auf Verläßlichkeit der Daten!</em>
+	  </div>
+	  
+	  
+	  <div class="img_daytemp">
+		<img src="daytempdew.png"   alt="Temperatures" />
+	  </div>
+	  <div class="img_daypress">
+		<img src="daybarometer.png" alt="Barometer"/>
+	  </div>
+	  <div class="img_daywind">
+		<img src="daywind.png"      alt="Wind" />
+	  </div>
+	  <div class="img_daywindvec">
+		<img src="daywindvec.png"   alt="Wind Vector" />
+	  </div>
+	  <div class="img_dayhum">
+		<img src="dayhum.png"       alt="Humidity" />
+	  </div>
+	  <div class="img_dayrain">
+		<img src="dayrain.png"      alt="Rain" />
+	  </div>
+
+	  <div class="footer" style="color:#202010;">
+		<div class="item" style="color:#202010;">
+		  <a href="http://www.weewx.com">powered by WeeWX</a>
+		</div>
+		<div class="item" style="color:#202010;">Aktiv $station.os_uptime</div>
+		<div class="item" style="color:#202010;">
+		  <address> <a href="mailto:michael.kappert@gmx.net">Kontakt</a> </address>
+		</div>
+	  </div>
+	</div>
+
   </body>
 
 </html>

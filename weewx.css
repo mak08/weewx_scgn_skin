@@ -1,142 +1,54 @@
-/************************************************************************* 
-   Hints
-   - flex-grow = 0 does not stretch at all, even if there is no other content
- *************************************************************************/
-/*************************************************************************
-  General properties 
- *************************************************************************/
-
 * {
     font-family: Helvetica, Arial, sans-serif;
     /* Eliminates borders around root element */
     
     margin: 0px;
     padding: 0px;
-    border: 0px;
+	box-sizing: border-box;
     border-radius: 3px;
-    background-color: transparent;
 }
 
-
-/*************************************************************************
-  Flexboxes 
- *************************************************************************/
+html {
+	background-size: cover;
+	background-image: url("img/STEG.JPG");
+	backdrop-filter: blur(5px) brightness(75%) saturate(120%);
+}
 
 body {
-
-    /* Gets rid of scrollbars on fullscreen page */
-	overflow: auto;
-
-	/* Is the background image part of the style (css) or the content (html) ? */
-	background-image: url("backgrounds/Optis.JPG");
-
-	/* Inside a DIV, use 'contains'; on the body, use 'cover' */
-	background-size: cover;
-}
-
-
-.fPage {
-	/* Center the page using display and margin (!) */
-    display: table;
 	margin: auto;
-    /* Fullscreen page - 100vw/vw may overflows on the right/bottom due to padding */
-    background-color: transparent;
-	width: 1198px;
-	overflow: auto;
+	width: 70%;
+	padding: 10px;
+	
+
 }
 
-.row {
-    display: flex;
-    flex-direction: Row;
-    align-items: stretch;
-    align-content: stretch;
-    margin: 4px 4px 2px 2px;
-    padding: 2px;
-    border-style: solid;
-    border-width: 2px 2px 2px 2px;
-    border-color: grey;
-    overflow: auto;
+div, img, label
+{
+	user-select: none;
+	background-color: white;
+	border: 2px;
+	padding: 10px;
+	border-color: black;
 }
 
-.column {
-    display: flex;
-    flex-direction: Column;
-    align-items: stretch
-    align-content: stretch;
-    margin: 4px 2px 4px 2px;
-    padding: 6px;
-    background-color: transparent;
-	overflow: auto;
- }
 
-.item {
-    display: inline-flex;
-    flex-direction: Row;
-    margin: 4px;
-    padding: 4px;
-    overflow: auto;
-}
-
-.fContentSpaced {
-    justify-content: space-between;
-}
-
-.fContentRight {
-    justify-content: flex-end;
-}
-
-.fContentCentered {
-    justify-content: center;
-}
-
-.fColorStandard {
-	color: white;
-	background-color: #335577;
-}
-
-.fCompactLabel {
-	border:none; 
-	margin:2px 10px 2px 0px; 
-	padding:0px;
-}
-
-.bold {
-	font-weight: bold;
-}
-
-/************************************************************************* 
-   Tables
- *************************************************************************/
-
-table {
-    border: 1px solid white;
-}
-
-th,
-td {
-    border: 1px solid white;
-    border-style: none none solid none;
-    border-radius: 0px;
-}
-/*************************************************************************
-  Other elements
- *************************************************************************/
+/* Style **********************************************************************/
 
 label {
     height: 30px;
     margin: 3px;
     padding: 4px 10px 2px 10px;
-    border-radius: 1px;
     background: linear-gradient(to bottom, rgba(200, 200, 200, 1) 0%, rgba(230, 230, 230, 1) 100%);
 }
 
 .linkbutton {
-	display: block;
-	margin: 2px;
+    display: inline-block;
+	margin: 3px;
 	padding: 3px;
-	height: 18px;
-	width: 80px;
+	align-self: end;
+
 	text-align: center;
+	vertical-align: middle;
 	text-decoration: none;
 	background-color: #2c2c2c;
 	color: #adadad;
@@ -146,26 +58,397 @@ label {
     color: #2c2c2c;
 }
 
-button:hover,
-input:hover {
-    background: linear-gradient(to top, rgba(190, 190, 190, 1) 0%, rgba(120, 120, 120, 1) 100%);
+
+/* Positioning ****************************************************************/
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr 5fr;
+	column-gap: 10px;
+	row-gap: 10px;
+	grid-auto-rows: minmax(30px, auto);
+	background-color: none;
+	background: none;
 }
 
-select,
-option {
-    width: 100%;
-    color: black;
+.header {
+	grid-column: 1 / 5;
+	grid-row: 1 / 2;
 }
 
-/*************************************************************************
-  Stacking elements (eg. stacking a drawing pane on a map)
- *************************************************************************/
-
-.zStack {
-    position: absolute;
-    width: auto;
-    height: auto;
+.updated {
+	grid-column: 1 / 5;
+	grid-row: 2;
 }
-/*************************************************************************
-  EOF
- *************************************************************************/
+
+.navbuttons {
+	grid-column: 4;
+	grid-row: 2;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-auto-rows: 60px;
+	grid-gap: 10px;
+	align-items: center;
+}
+
+/******************************************************************************/
+
+.hdg_current {
+	grid-column: 1 / 3;
+	grid-row: 3;
+}
+
+
+.lbl_tmp {
+	grid-column: 1;
+	grid-row: 4;
+}
+
+.val_tmp {
+	grid-column: 2;
+	grid-row: 4;
+}
+
+.lbl_wind {
+	grid-column: 1;
+	grid-row: 5;
+}
+
+.val_wind {
+	grid-column: 2;
+	grid-row: 5;
+}
+
+.lbl_gust {
+	grid-column: 1;
+	grid-row: 6;
+}
+
+.val_gust {
+	grid-column: 2;
+	grid-row: 6;
+}
+
+.lbl_press {
+	grid-column: 1;
+	grid-row: 7;
+}
+
+.val_press {
+	grid-column: 2;
+	grid-row: 7;
+}
+
+.lbl_hum {
+	grid-column: 1;
+	grid-row: 8;
+}
+
+.val_hum {
+	grid-column: 2;
+	grid-row: 8;
+}
+
+.lbl_rain {
+	grid-column: 1;
+	grid-row: 9;
+}
+
+.val_rain {
+	grid-column: 2;
+	grid-row: 9;
+}
+
+/******************************************************************************/
+
+.hdg_extreme {
+	grid-column: 1 / 3;
+	grid-row: 10;
+}
+	
+.lbl_thigh {
+	grid-column: 1;
+	grid-row: 11;
+}
+
+.val_thigh {
+	grid-column: 2;
+	grid-row: 11;
+}
+
+.lbl_tlow {
+	grid-column: 1;
+	grid-row: 12;
+}
+
+.val_tlow {
+	grid-column: 2;
+	grid-row: 12;
+}
+
+.lbl_phigh {
+	grid-column: 1;
+	grid-row: 13;
+}
+
+.val_phigh {
+	grid-column: 2;
+	grid-row: 13;
+}
+
+.lbl_plow {
+	grid-column: 1;
+	grid-row: 14;
+}
+
+.val_plow {
+	grid-column: 2;
+	grid-row: 14;
+}
+
+.lbl_vmax {
+	grid-column: 1;
+	grid-row: 15;
+}
+
+.val_vmax {
+	grid-column: 2;
+	grid-row: 15;
+}
+
+.lbl_gmax {
+	grid-column: 1;
+	grid-row: 16;
+}
+
+.val_gmax {
+	grid-column: 2;
+	grid-row: 16;
+}
+
+
+/******************************************************************************/
+
+.hdg_almanach {
+	grid-column: 1 / 3;
+	grid-row: 17;
+}
+	
+.lbl_sunrise {
+	grid-column: 1;
+	grid-row: 18;
+}
+
+.val_sunrise {
+	grid-column: 2;
+	grid-row: 18;
+}
+
+.lbl_sundown {
+	grid-column: 1;
+	grid-row: 19;
+}
+
+.val_sundown {
+	grid-column: 2;
+	grid-row: 19;
+}
+
+/******************************************************************************/
+
+.hdg_stationinfo {
+	grid-column: 1 / 3;
+	grid-row: 20;
+}
+
+.lbl_lat {
+	grid-column: 1;
+	grid-row: 21;
+}
+
+.val_lat   {
+	grid-column: 2;
+	grid-row: 21;
+}
+
+.lbl_lon {
+	grid-column: 1;
+	grid-row: 22;
+}
+
+.val_lon   {
+	grid-column: 2;
+	grid-row: 22;
+}
+
+.lbl_sealevel {
+	grid-column: 1;
+	grid-row: 23;
+}
+
+.val_sealevel {
+	grid-column: 2;
+	grid-row: 23;
+}
+
+.lbl_hw {
+	grid-column: 1;
+	grid-row: 24;
+}
+
+.val_hw1 {
+	grid-column: 2;
+	grid-row: 24;
+}
+
+.val_hw2 {
+	grid-column: 2;
+	grid-row: 25;
+}
+
+.lbl_disclaimer {
+	grid-column: 1 / 3;
+	grid-row: 27 / 29;
+}
+
+/******************************************************************************/
+
+.img_daytemp {
+	grid-column: 4;
+	grid-row: 4 / 8;
+}
+
+.img_daypress {
+	grid-column: 4;
+	grid-row: 8 / 12;
+}
+
+.img_daywind {
+	grid-column: 4;
+	grid-row: 12 / 16;
+}
+
+.img_daywindvec {
+	grid-column: 4;
+	grid-row: 16 / 20;
+}
+
+.img_dayhum {
+	grid-column: 4;
+	grid-row: 20 / 24;
+}
+
+.img_dayrain {
+	grid-column: 4;
+	grid-row: 24 / 29;
+}
+
+/******************************************************************************/
+
+.img_weektemp {
+	grid-column: 4;
+	grid-row: 4 / 8;
+}
+
+.img_weekpress {
+	grid-column: 4;
+	grid-row: 8 / 12;
+}
+
+.img_weekwind {
+	grid-column: 4;
+	grid-row: 12 / 16;
+}
+
+.img_weekwindvec {
+	grid-column: 4;
+	grid-row: 16 / 20;
+}
+
+.img_weekhum {
+	grid-column: 4;
+	grid-row: 20 / 24;
+}
+
+.img_weekrain {
+	grid-column: 4;
+	grid-row: 24 / 29;
+}
+
+/******************************************************************************/
+
+.img_monthtemp {
+	grid-column: 4;
+	grid-row: 4 / 8;
+}
+
+.img_monthpress {
+	grid-column: 4;
+	grid-row: 8 / 12;
+}
+
+.img_monthwind {
+	grid-column: 4;
+	grid-row: 12 / 16;
+}
+
+.img_monthwindvec {
+	grid-column: 4;
+	grid-row: 16 / 20;
+}
+
+.img_monthhum {
+	grid-column: 4;
+	grid-row: 20 / 24;
+}
+
+.img_monthrain {
+	grid-column: 4;
+	grid-row: 24 / 29;
+}
+
+
+
+/******************************************************************************/
+
+.img_yeartemp {
+	grid-column: 4;
+	grid-row: 4 / 8;
+}
+
+.img_yearpress {
+	grid-column: 4;
+	grid-row: 8 / 12;
+}
+
+.img_yearwind {
+	grid-column: 4;
+	grid-row: 12 / 16;
+}
+
+.img_yearwindvec {
+	grid-column: 4;
+	grid-row: 16 / 20;
+}
+
+.img_yearhum {
+	grid-column: 4;
+	grid-row: 20 / 24;
+}
+
+.img_yearrain {
+	grid-column: 4;
+	grid-row: 24 / 29;
+}
+
+
+/******************************************************************************/
+
+.footer {
+	grid-column: 1 / 5;
+	grid-row: 29;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+/******************************************************************************/
